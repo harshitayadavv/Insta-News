@@ -1,0 +1,38 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Flask-specific
+instance/
+*.db
+*.sqlite3
+
+# Environment variables and secret files
+.env
+
+# Editor config
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node modules (for Bootstrap, SCSS, etc.)
+node_modules/
+
+# SCSS / Sass cache
+.sass-cache/
+.cache/
+
+# Compiled CSS and map files
+*.css.map
+
+# Log files
+*.log
