@@ -3,17 +3,23 @@ import requests
 import os
 from dotenv import load_dotenv
 
+# Load environment variables from .env file
 load_dotenv()
-api_key = os.getenv("NEWS_API_KEY")
 
+# Get the API key from environment variable
+api_key = os.getenv("NEWS_API_KEY")
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     query = request.args.get('query', 'latest')
-    url = f'https://newsapi.org/v2/everything?q={query}&apiKey={NEWS_API_KEY}'
+    url = f'https://newsapi.org/v2/everything?q={query}&apiKey={api_key}'
     response = requests.get(url)
+    
+    if response.status_code != 200:
+        return render_template('index.html', articles=[], query=query, error="Failed to fetch news.")
+    
     news_data = response.json()
     articles = news_data.get('articles', [])
 
